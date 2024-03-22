@@ -16,9 +16,6 @@ sed -i 's/192.168.1.1/192.168.0.2/g' package/base-files/files/bin/config_generat
 # 修改主机名字，把 iStore OS 修改你喜欢的就行（不能纯数字或者使用中文）
 sed -i 's/OpenWrt/iStoreOS/g' package/base-files/files/bin/config_generate
 
-# 更改 Argon 主题背景
-cp -f $GITHUB_WORKSPACE/bg1.jpg package/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
-
 # 移除要替换的包
 #rm -rf feeds/packages/net/mosdns
 rm -rf feeds/packages/net/v2ray-geodata
@@ -50,6 +47,8 @@ git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-ali
 chmod -R a+x $GITHUB_WORKSPACE/preset-clash-core.sh
 $GITHUB_WORKSPACE/preset-clash-core.sh
 
+# 更改 Argon 主题背景
+cp -f $GITHUB_WORKSPACE/bg1.jpg package/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 
 echo "
 # 额外组件
