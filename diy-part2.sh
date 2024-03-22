@@ -42,6 +42,7 @@ git clone https://github.com/innmonkey/luci-theme-argon package/luci-theme-argon
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-adguardhome
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-openclash
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-aliddns
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-filebrowser filebrowser
 
 # 加入OpenClash核心
 chmod -R a+x $GITHUB_WORKSPACE/preset-clash-core.sh
@@ -88,6 +89,9 @@ CONFIG_PACKAGE_luci-app-uhttpd=y
 
 # 阿里DDNS
 CONFIG_PACKAGE_luci-app-aliddns=y
+
+# filebrowser
+CONFIG_PACKAGE_luci-app-filebrowser=y
 
 # rclone
 #CONFIG_PACKAGE_rclone=y
