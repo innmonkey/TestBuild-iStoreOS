@@ -17,10 +17,13 @@ sed -i 's/192.168.1.1/192.168.0.2/g' package/base-files/files/bin/config_generat
 sed -i 's/OpenWrt/iStoreOS/g' package/base-files/files/bin/config_generate
 
 # 移除要替换的包
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 20.x feeds/packages/lang/golang
+#rm -rf feeds/packages/lang/golang
+#git clone https://github.com/sbwml/packages_lang_golang -b 20.x feeds/packages/lang/golang
 #rm -rf feeds/packages/net/mosdns
-rm -rf feeds/packages/net/v2ray-geodata
+# drop mosdns and v2ray-geodata packages that come with the source
+find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
+find ./ | grep Makefile | grep mosdns | xargs rm -f
+#rm -rf feeds/packages/net/v2ray-geodata
 #cp -r -f ./feeds/第三方源的文件 ./feeds/packages/net/mosdns
 rm -rf feeds/third_party/luci-app-LingTiGameAcc
 rm -rf feeds/third_party/luci-app-pushbot
