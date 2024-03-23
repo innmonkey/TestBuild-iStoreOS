@@ -17,16 +17,8 @@ sed -i 's/192.168.1.1/192.168.0.2/g' package/base-files/files/bin/config_generat
 sed -i 's/OpenWrt/iStoreOS/g' package/base-files/files/bin/config_generate
 
 # 移除要替换的包
-#rm -rf feeds/packages/lang/golang
-#git clone https://github.com/sbwml/packages_lang_golang -b 20.x feeds/packages/lang/golang
-#rm -rf feeds/packages/net/mosdns
-# drop mosdns and v2ray-geodata packages that come with the source
-find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
-find ./ | grep Makefile | grep mosdns | xargs rm -f
-#rm -rf feeds/packages/net/v2ray-geodata
-#cp -r -f ./feeds/第三方源的文件 ./feeds/packages/net/mosdns
+rm -rf feeds/packages/net/v2ray-geodata
 rm -rf feeds/third_party/luci-app-LingTiGameAcc
-rm -rf feeds/third_party/luci-app-pushbot
 rm -rf feeds/third/luci-theme-argon
 
 # Git稀疏克隆，只克隆指定目录到本地
@@ -42,7 +34,6 @@ function git_sparse_clone() {
 # 添加额外插件
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
-git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
 git clone https://github.com/innmonkey/luci-theme-argon package/luci-theme-argon
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-adguardhome
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-openclash
@@ -75,19 +66,12 @@ CONFIG_PACKAGE_luci-app-pushbot=y
 
 # Jellyfin
 CONFIG_PACKAGE_luci-app-jellyfin=y
-CONFIG_PACKAGE_app-meta-jellyfin=y
-CONFIG_PACKAGE_luci-i18n-jellyfin-zh-cn=y
 
 # qbittorrent
 CONFIG_PACKAGE_luci-app-qbittorrent=y
 
 # transmission
 CONFIG_PACKAGE_luci-app-transmission=y
-CONFIG_PACKAGE_transmission-daemon=y
-CONFIG_PACKAGE_luci-i18n-transmission-zh-cn=y
-CONFIG_PACKAGE_app-meta-transmission=y
-CONFIG_PACKAGE_transmission-web-control=y
-CONFIG_PACKAGE_transmission-daemon-openssl=y
 
 # uhttpd
 CONFIG_PACKAGE_luci-app-uhttpd=y
@@ -97,10 +81,6 @@ CONFIG_PACKAGE_luci-app-aliddns=y
 
 # filebrowser
 CONFIG_PACKAGE_luci-app-filebrowser=y
-
-# rclone
-#CONFIG_PACKAGE_rclone=y
-#CONFIG_PACKAGE_fuse3-utils=y
 
 " >> .config
 
