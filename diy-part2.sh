@@ -82,9 +82,10 @@ CONFIG_PACKAGE_luci-app-qbittorrent=y
 
 # transmission
 CONFIG_PACKAGE_luci-app-transmission=y
+CONFIG_PACKAGE_transmission-web-control=y
 
 # uhttpd
-CONFIG_PACKAGE_luci-app-uhttpd=y
+#CONFIG_PACKAGE_luci-app-uhttpd=y
 
 # 阿里DDNS
 CONFIG_PACKAGE_luci-app-aliddns=y
